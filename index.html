@@ -40,32 +40,32 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section data-markdown>
+				<section data-markdown data-transition='convex'>
 					<script type="text/template">
 						#Swift Study vol.3
 
 						Created by Nagamine Hiromasa
 					</script>
 				</section>
-				<section>
-					<section data-markdown>
-					<script type="text/template">
-						#Swift 勉強会
-						<br>
-
-						- iOSアプリを開発してみたい
-						- Swiftってどういうもの？
-
-						<br>
-						など、Swiftに興味を持っている人向けに<br>
-						勉強会を開いています。
-					</script>
-					</section>
-				</section>
-				<section>
+				<section data-transition='convex'>
 					<section data-markdown>
 						<script type="text/template">
-							###今回Swiftを使って作るものはこれです
+							#Swift 勉強会
+							<br>
+
+							- iOSアプリを開発してみたい
+							- Swiftってどういうもの？
+
+							<br>
+							など、Swiftに興味を持っている人向けに<br>
+							勉強会を開いています。
+						</script>
+					</section>
+				</section>
+				<section data-transition='convex'>
+					<section data-markdown>
+						<script type="text/template">
+							###今回、Swiftを使ってこんな物を作ります
 						</script>
 					</section>
 					<section data-markdown>
@@ -79,30 +79,155 @@
 					</script>
 					</section>
 				</section>
-				<section>
+				<section data-transition='convex'>
 					<section data-markdown>
 						<script type="text/template">
-							###1. 前回のおさらい
+							##1. 前回のおさらい
 
+							- Variable Type
 							- View
-							- Swiftで使う Variable Type
+							- Function
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							###View
+							##Variable Type
+							<br>
+							変数を定義する場合２つのパターンがある
+							<pre><code style="font-size:140%; line-height: 130%;"> /* 変数を扱う場合 */
+							 var : 中の値を変化させることができる
+							    var num = 123
+							    num = num + 10
+
+							 /* 定数を扱う場合 */
+							 let : 一度値を入れると変更できない
+							    let num = 123
+							    // num = num + 10 <= Error
+							</code></pre>
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							##Variable Type
+							<br>
+							```swift
+							/* Int:数値, Double, Float:小数値 */
+							var number: Int = 123
+							var number: Double = 3.14
+
+							/* String:文字列 */
+							var text: String = "This is String"
+
+							/* Array, Dictionary:数値 */
+							var array: Array = Array(1, 2, 3)
+							```
+
+							<br>
+							Swiftは型推論なので、型を省略できます
+							```swift
+							/* 型を省略 */
+							var array = Array(1, 2, 3)
+							```
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							##View
+
+							- 画像やテキスト、図形などのオブジェクトを表示
+							- UIKitというFrameworkを呼び出して使う
+
+							<br>
+
+							**UIKit.framework**の**View**オブジェクト
+							> UIView, UIImageView, UITextView, UITextField, UILabel, UIButton, etc...
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							###Swiftで使う Variable Type
+							##View
+
+							100x100、背景色がブルーのビューのサンプルコード
+
+							```swift
+							// サンプルコード
+							// サイズを生成 (x, y, width, height): x,yは表示位置
+							var rect    = CGRectMake(0, 0, 100, 100)
+							// 色を生成
+							var bgColor = UIColor.blueColor()
+
+							// 生成したサイズを使って、ビューを生成
+							var view    = UIView(frame: rect)
+							// ビューの背景に色を設定
+							view.backgroundColor = gbColor
+							```
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							##Function
+							<br>
+							関数の定義
+
+							```swift
+							/* 戻り値なし */
+							func aMethod(){...}
+
+							/* 戻り値あり */
+							func aMethod() -> 戻り値型 {
+								...
+								return 戻り値
+							}
+
+							/* 引数渡し */
+							func aMethod(int a:Int, int b:Int) -> 戻り値型 {
+								...
+								return 戻り値
+							}
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							##Function
+							<br>
+
+							関数の使用例
+							```swift
+							/* "Hello, World"を出力 */
+							func printHelloWorld(){
+								println("Hello, World")
+							}
+
+							printHelloWorld() // => "Hello, World"が出力される
+
+
+							/* 引数の和 */
+							func sum(var a:Int, var b:Int) -> Int {
+								var ans = a + b
+								return ans
+							}
+
+							var ans = sum(5, 10) // => ans: 15
+
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						##前回使った資料
+						- [Swift勉強会 vol.1 資料](http://www.slideshare.net/nagaminehiromasa/swift-study)
+						- [Qiita - Swiftでビューを操作する](http://qiita.com/web_chiro/items/7485cee8b73849f0c847)
 						</script>
 					</section>
 				</section>
-				<section>
+				<section data-transition='convex'>
 					<section data-markdown>
 						<script type="text/template">
-							###2. ViewController
+							##2. ViewController
 
 							- ViewControllerとは？
 							- 画面の表示
@@ -112,91 +237,307 @@
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							###ViewControllerとは？
+							##ViewControllerとは？
+							<br>
+
+							- Viewを管理(表示・配置・アニメーションなど)
+							- 受け取ったデータに合わせてTextやViewを表示・操作
+							- ViewControllerは自身にもViewを持っている
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							###画面の表示
+							##プロジェクト作成
+							<br>
+							ViewControllerは、Xcodeのプロジェクトを作成すると使えます。
+							<br>
+							<br>
+							まずは、Projectを作成します。
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							###遷移
+							##画面の表示
+							<br>
+
+							Xcodeプロジェクトには最初からViewControllerが存在。
+
+							なので、プロジェクトを実行すれば画面を表示できます。
+
+							<br>
+
+							> ビルド方法：Command + Shift + r
+
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							###dismiss/pop ViewController
+							##遷移
+							<br>
+							iOSアプリの画面の遷移は、以下の条件で行う
+
+							- 別のViewControllerへ移動
+							- 複数ViewControllerが必要
+
+							<br>
+							なので、新しくViewControllerを１つ作成します。
+
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							###Problem 1
+							##遷移
+							<br>
+							BlueViewControllerへ遷移するためのボタンを設置 <br>
+							ボタンの設置には、Main.storyboardを使用する
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							##遷移
+							<br>
+							遷移の種類
+
+							- Push
+							- Modal
+							- Popover
+							- etc..
+
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							##資料
+
+							- [Qiita - SwiftでViewControllerを使う](http://qiita.com/web_chiro/items/66dc637463f98716bfa5)
+						</script>
+					</section>
+					<!-- <section data-markdown>
+						<script type="text/template">
+							##dismiss/pop ViewController
+						</script>
+					</section> -->
+					<section data-markdown>
+						<script type="text/template">
+							##Problem 1
+
+							1. **ViewControllerにボタンを追加しましょう**
+							 - BlueButton: Text = "Blue"
+							 - RedButton: Text= "Red" <br><br>
+							2. **プロジェクトにViewControllerを追加しましょう。**
+							 - BlueViewController: BackgroundColor = Blue
+							 - RedViewController: BackgroundColor = Red <br><br>
+							3. **それぞれの画面へ遷移する処理を追加しましょう**
+							 - BlueButton => BlueViewController
+							 - RedButton => RedViewController
 						</script>
 					</section>
 				</section>
-				<section>
+				<section data-transition='convex'>
 					<section data-markdown>
 						<script type="text/template">
-							###3. Gestrue Event
+							##3. Gestrue Event
 
 							- Gestureとは？
 							- 種類
 							- 処理の流れ
-							- 追加・削除
+							- ジェスチャーの追加
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							###Gestureとは？
+							##Gestureとは？
+							<br>
+
+							- 画像を拡大、ゲームでアイテムをタップするときの指の動き
+							- 指の動きに対して、対応するジェスチャーがある
+							- Viewにジェスチャーをするとイベントが発生する
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							###種類
+							##種類
+
+							- *Tap*
+							- *Pan*
+							- *Pinch*
+							- *Rotate*
+							- *Swipe*
+							- *LongPress*
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							###処理の流れ
+							##処理の流れ
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							###追加・削除
+							##ジェスチャーの追加
+							<br>
+
+							タップすると発生する処理をViewControllerに実装します <br>
+							ここでは、*"tapGesture"*というメソッドを定義します
+
+							```swift
+							func tapGesture(gestureRecognizer: UITapGestureRecognizer){
+							    // タップviewの色を変える (Red <=> Blue)
+							    if(view.backgroundColor  == .redColor()) {
+							         view.backgroundColor == .blueColor()
+							    }
+							    else {
+							         view.backgroundColor == .redColor()
+							    }
+							}
+							```
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							###Problem 2
+							##ジェスチャーの追加
+							<br>
+
+							ジェスチャーを生成します。<br>
+							Selectorクラスを使って呼び出すメソッドを指定します。
+
+							```swift
+							var aSelector = Selector("tapGesture:")
+							var tapRecognizer = UITapGestureRecognizer(target: self, action: aSelector)
+							```
+
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							##ジェスチャーの追加
+							<br>
+							ViewControllerに処理を追加すると以下のようになります。<br>
+							ソースコードは下にスクロールします。
+
+							```swift
+							override func viewDidLoad() {
+							    super.viewDidLoad()
+
+							    self.view.backgroundColor = .whiteColor()
+
+							    // ジェスチャーの生成
+							    var aSelector = Selector("tapGesture:")
+							    var tapRecognizer = UITapGestureRecognizer(target: self, action: aSelector))
+
+							    // ビューの生成
+							    var view1 = UIView(frame: CGRectMake(30, 30, 100, 100))
+							    view1.backgroundColor = .redColor()
+							    // ジェスチャーの追加
+							    view1.addGestureRecognizer(tapRecognizer)
+							    self.view.addSubview(view1)
+							}
+
+							// ジェスチャーイベント処理
+							func tapGesture(gestureRecognizer: UITapGestureRecognizer){
+							    // タップviewの色を変える (Red <=> Blue)
+							    if(view.backgroundColor  == .redColor()) {
+							         view.backgroundColor == .blueColor()
+							    }
+							    else {
+							         view.backgroundColor == .redColor()
+							    }
+							}
+							```
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							##資料
+
+							- [Qiita - Swiftでジェスチャーの追加](http://qiita.com/web_chiro/items/06a87514c49dd86c38ad)
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							##Problem 2
 						</script>
 					</section>
 				</section>
-				<section>
+				<section data-transition='convex'>
 					<section data-markdown>
 						<script type="text/template">
-							### 4. Closure
+							## 4. Closure
 							- Closureとは？
+							- サンプルコード
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							###Closureとは？
+							##Closureとは？
+							- 一時的な関数を定義することができる
+							- 関数内でも定義することができる
+							- ネストした環境にcallbackを渡すときなどに必要
+							- JavaScriptなどでも取り入れられている
+						</script>
+					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+						クロージャー書き方
+
+						```swift
+							var closure = (a: Int, b: Int) -> 戻り値型 { in
+								return  戻り値
+							}
+						```
+						<br>
+						サンプルコード
+						```swift
+
+						func executeClosureSample() {
+							// 足し算クロージャー
+							var closureAdd = (a: Int, b: Int) -> Int { in
+						    return a + b
+							}
+
+							testClosure(1,2,closureAdd)
+
+							// 引き算クロージャー
+							var closureSubstract = (a: Int, b: Int) -> Int { in
+								return a - b
+							}
+
+							testClosure(1,2,closureSubstract)
+
+						}
+
+						func testClosure(var a:Int, b:Int, closure: (a: Int, b: Int) -> Int) {
+							println("testClosure: \(closure(a,b))")
+						}
+
+						executeClosureSample()
+						/*
+							executeClosureSample()
+
+							Output:
+								testClosure: 3
+								testClosure: -1
+
+						*/
+
+						```
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							###Problem 3
+							##Problem 3
 						</script>
 					</section>
 				</section>
-				<section data-markdown>
+				<section data-markdown data-transition='convex'>
 					<script type="text/template">
-						###Problem
+						##Problem
 					</script>
 				</section>
-				<section>
+				<section data-transition='convex'>
 					<section data-markdown>
 						<script type="text/template">
 							This is Swift Code
@@ -207,33 +548,37 @@
 						</script>
 					</section>
 				</section>
-				<section>
+				<section data-transition='convex'>
 					<section data-markdown>
 						<script type="text/template">
-							##今後開催予定のイベント
+							##少し告知
 						</script>
 					</section>
 					<section data-markdown>
 						<script type="text/template">
-							##Swift勉強会 vol.4
+							##イベント
+
+							- Swift もくもく会 vol.3 (日付は未定)
+							- Swift勉強会 vol.4 (日付は未定)
 
 							<br>
-							Swift勉強会 第4回も開催を予定しています。<br>
-							(日付は未定)
+							今後、開催を予定しています
 						</script>
 					</section>
-
 					<section data-markdown>
 						<script type="text/template">
-							##Swift もくもく会 vol.3
+							##グループ
+
+							- [Swift頑張る会 (Facebook)]()
+							- [Swift勉強会 (Connpass)]()
 
 							<br>
-							他に、Swiftもくもく会も時々開催してます。
+							現在２つグループがあります
 						</script>
 					</section>
 				</section>
 
-				<section data-markdown>
+				<section data-markdown data-transition='convex'>
 					<script type="text/template">
 						これで、<strong>[Swift勉強会 vol.3](http://swiftstarter.connpass.com/event/11105/)</strong> は終了です。<br>
 						ご参加有難うございました。
@@ -263,7 +608,7 @@
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return true; }, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
 					{ src: 'plugin/notes/notes.js', async: true }
 				]
