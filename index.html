@@ -422,13 +422,15 @@
 							ここでは、*"tapGesture"*というメソッドを定義します
 
 							```swift
+							var view1: UIView!
+
 							func tapGesture(gestureRecognizer: UITapGestureRecognizer){
 							    // タップviewの色を変える (Red <=> Blue)
 							    if(view.backgroundColor  == .redColor()) {
-							         view.backgroundColor == .blueColor()
+							         view.backgroundColor = .blueColor()
 							    }
 							    else {
-							         view.backgroundColor == .redColor()
+							         view.backgroundColor = .redColor()
 							    }
 							}
 							```
@@ -468,7 +470,7 @@
 							    var tapRecognizer = UITapGestureRecognizer(target: self, action: aSelector))
 
 							    // ビューの生成
-							    var view1 = UIView(frame: CGRectMake(30, 30, 100, 100))
+							    view1 = UIView(frame: CGRectMake(30, 30, 100, 100))
 							    view1.backgroundColor = .redColor()
 							    // ジェスチャーの追加
 							    view1.addGestureRecognizer(tapRecognizer)
@@ -476,13 +478,16 @@
 							}
 
 							// ジェスチャーイベント処理
+
+							var view1: UIView!
+
 							func tapGesture(gestureRecognizer: UITapGestureRecognizer){
 							    // タップviewの色を変える (Red <=> Blue)
-							    if(view.backgroundColor  == .redColor()) {
-							         view.backgroundColor == .blueColor()
+							    if(view1.backgroundColor  == .redColor()) {
+							         view1.backgroundColor = .blueColor()
 							    }
 							    else {
-							         view.backgroundColor == .redColor()
+							         view1.backgroundColor = .redColor()
 							    }
 							}
 							```
