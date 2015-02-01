@@ -257,6 +257,13 @@
 					</section>
 					<section data-markdown>
 						<script type="text/template">
+							##プロジェクト作成
+
+							<img src="./img/create_project.png" style="border: none; background-color: transparent">
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
 							##画面の表示
 							<br>
 
@@ -284,6 +291,29 @@
 
 						</script>
 					</section>
+
+					<section data-markdown>
+						<script type="text/template">
+							##遷移
+							<br>
+
+							- File -> New -> File (command + N) でSwiftファイルを選択
+							- "BlueViewController"という名前をつける
+
+							```swift
+							import UIKit
+
+							class BlueViewController: UIViewController {
+								override func viewDidLoad() {
+									super.viewDidLoad()
+
+									// 背景色にブルー設定する
+									self.view.backgroundColor = .blueColor()
+								}
+							}
+							```
+						</script>
+					</section>
 					<section data-markdown>
 						<script type="text/template">
 							##遷移
@@ -291,8 +321,11 @@
 							BlueViewControllerへ遷移するためのボタンを設置 <br>
 							ボタンの設置には、Main.storyboardを使用する
 
+							<img src="./img/vc_move_flow.png" style="border: none; background-color: transparent">
+
 						</script>
 					</section>
+
 					<section data-markdown>
 						<script type="text/template">
 							##遷移
@@ -370,6 +403,9 @@
 					<section data-markdown>
 						<script type="text/template">
 							##処理の流れ
+
+							<img src="./img/gesture_flow.png" style="border: none; background-color: transparent; width: 50%">
+
 						</script>
 					</section>
 					<section data-markdown>
@@ -495,7 +531,7 @@
 						func executeClosureSample() {
 							// 足し算クロージャー
 							var closureAdd = (a: Int, b: Int) -> Int { in
-						    return a + b
+								return a + b
 							}
 
 							testClosure(1,2,closureAdd)
