@@ -535,34 +535,34 @@
 						クロージャー書き方
 
 						```swift
-							var closure = (a: Int, b: Int) -> 戻り値型 { in
-								return  戻り値
-							}
+						var closure = {(a: Int, b: Int) -> 戻り値型 in
+							return  戻り値
+						}
 						```
 						<br>
 						サンプルコード
 						```swift
-
 						func executeClosureSample() {
 							// 足し算クロージャー
-							var closureAdd = (a: Int, b: Int) -> Int { in
+							var closureAdd = {(#a: Int, #b: Int) -> Int in
 								return a + b
 							}
 
-							testClosure(1,2,closureAdd)
+							testClosure(a: 1,b: 2,closureAdd)
 
 							// 引き算クロージャー
-							var closureSubstract = (a: Int, b: Int) -> Int { in
+							var closureSubstract = {(#a: Int, #b: Int) -> Int in
 								return a - b
 							}
 
-							testClosure(1,2,closureSubstract)
+							testClosure(a: 1,b: 2, closureSubstract)
 
 						}
 
-						func testClosure(var a:Int, b:Int, closure: (a: Int, b: Int) -> Int) {
-							println("testClosure: \(closure(a,b))")
+						func testClosure(#a:Int, b:Int, closure: (a: Int, b: Int) -> Int) {
+							println("testClosure: \(closure(a: a,b: b))")
 						}
+
 
 						executeClosureSample()
 						/*
